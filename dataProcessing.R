@@ -5,7 +5,7 @@
 \margl1440\margr1440\vieww28300\viewh17140\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\fs22 \cf2 \CocoaLigature0 download.file("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv","/home/ec2-user/covid-data.csv")\
+\f0\fs22 \cf2 \CocoaLigature0 download.file("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv\'94,\'94/Users/bharath/covid-data.csv")\
 data <- read.csv("covid-data.csv")\
 print(nrow(data))\
 df <- data.frame(data)\
