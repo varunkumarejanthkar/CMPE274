@@ -5,16 +5,17 @@ import cookie from 'react-cookies';
 import {Redirect} from 'react-router';
 import tableau from 'tableau-api';
 import Pagination from '@material-ui/lab/Pagination';
+import background from '../../Pictures/covid.jpg'
+//import from '../../../public/Pictures/bg.jfif'
 
 class Home extends Component {
     constructor(){
         super();
         this.state = {   
             currentPage: 1,
-            url1:"https://public.tableau.com/views/CMPE274_16507779959670/",
+            url1:"https://public.tableau.com/views/CMPE274_16507779959670/Sheet",
             url2:"?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link",
-            limit : 6,
-            arr:["Dashboard1","Dashboard2","Dashboard3","Dashboard4","Dashboard5","Dashboard6"]
+            limit : 7
         }       
     }  
   
@@ -47,10 +48,8 @@ class Home extends Component {
       }
 
     intitalizeTableau = () => {       
-        var containerDiv = document.getElementById("vizContainer");
-        document.getElementById("vizContainer").innerHTML = '';    
-        var current = this.state.arr[parseInt(localStorage.getItem('currentPage')) - 1];     
-        var url = this.state.url1 + current + this.state.url2;
+        var containerDiv = document.getElementById("vizContainer");        
+        var url = this.state.url1 + localStorage.getItem('currentPage') + this.state.url2;
         const options = {
             hideTabs: true,
             onFirstInteractive: function () {
@@ -64,14 +63,25 @@ class Home extends Component {
         this.intitalizeTableau();
     }
 
+    setSheet = (e) => {
+        localStorage.setItem('currentPage', e.target.id);
+    }
    
-    render(){
-       
+    render(){       
         return(
             <div>      
-                <div id="vizContainer" style={{width:"100%", marginLeft:"0%"}}></div>                                 
-                <div style={{marginLeft:"27%", marginTop:"1.5%", marginBottom:"60px"}}><button onClick={this.onPreviousClicked} style={{float:"left", height:"31px", marginLeft:"1%", width:"7%", background:"#e8eaf6", border:"0px solid", borderRadius:"5px"}}>Previous</button><Pagination id = "divPagination" style={{float:"left"}} defaultPage={parseInt(localStorage.getItem('currentPage'))} count={this.state.limit} color="primary" variant="outlined" shape="rounded" onClick = {this.onPageClick}/>
-                <button onClick={this.onNextClicked} style={{float:"left", height:"31px", width:"7%", background:"#e8eaf6", border:"0px solid", borderRadius:"5px"}}>Next</button></div>
+                <div style={{position:"absolute", backgroundImage: `url(${background})`, opacity:"0.7", backgroundRepeat:"no-repeat", width:"100%", height:"100vh", backgroundSize:"100%", marginTop:"-1.7%"}}></div>
+                <div style={{position:"relative"}}>
+                <h4 style={{marginLeft:"2%", paddingTop: "2%", fontWeight:"bold"}}>List of Dashboards</h4>
+                <ul>
+                    <li><a style = {{color:"black"}} id = "1" onClick={this.setSheet} href = "/home">World Data</a></li>
+                    <li><a style = {{color:"black"}} id = "2" onClick={this.setSheet} href = "/home">Percentage of people vaccinated, fully vaccinated, boosters administered based on country's population</a></li>
+                    <li><a style = {{color:"black"}} id = "3" onClick={this.setSheet} href = "/home">Vaccination rates based on location</a></li>
+                    <li><a style = {{color:"black"}} id = "4" onClick={this.setSheet} href = "/home">Top 10 countries with highest number of people vaccinated and boosters administered for 100 people</a></li>                    
+                    <li><a style = {{color:"black"}} id = "5" onClick={this.setSheet} href = "/home">Vaccinations based on manufacturers</a></li>                    
+                    <li><a style = {{color:"black"}} id = "6" onClick={this.setSheet} href = "/home">Vaccination rates by country income level</a></li>
+                </ul>
+                </div>
             </div> 
         )
     }
