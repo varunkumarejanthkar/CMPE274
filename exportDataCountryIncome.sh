@@ -1,0 +1,1 @@
+bin/dsbulk load -url "/Users/bharath/covid-confirmed-cases-since-100th-case-by-country-income-cleaned.csv" -k test -t cases_by_country_income -b "/Users/bharath/Downloads/secure-connect-cassandra.zip" -u xpGxusKfIeHRPgfWqHYFFtyk -p dMnJ.nQCk6obYq+WAKGJB_WPiINIgfyq0Q2mf.AnZiX8fKyStiX+F.MAsqhhy5_Pt_xQhlX8m_Jhwinim9BjgEtGmrAQ1r6GdkbXN7Kbq,0EL0LSvK,qLeUvsPGhOfop -header true

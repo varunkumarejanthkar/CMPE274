@@ -1,0 +1,1 @@
+bin/dsbulk load -url "/home/ec2-user/vaccinationsByAgeGroup-cleaned.csv" -k test -t vaccinations_age_group -b "/home/ec2-user/secure-connect-cassandra.zip" -u xpGxusKfIeHRPgfWqHYFFtyk -p dMnJ.nQCk6obYq+WAKGJB_WPiINIgfyq0Q2mf.AnZiX8fKyStiX+F.MAsqhhy5_Pt_xQhlX8m_Jhwinim9BjgEtGmrAQ1r6GdkbXN7Kbq,0EL0LSvK,qLeUvsPGhOfop -header true
